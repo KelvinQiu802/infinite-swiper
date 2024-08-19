@@ -25,9 +25,12 @@ firstImage.src = images[0];
 imageContainer.appendChild(firstImage);
 
 let index = 0;
+imageContainer.children[index + 1].classList.add('active');
 
 function moveTo(index) {
-  imageContainer.style.transform = `translateX(-${(index + 1) * 100}%)`;
+  imageContainer.style.transform = `translateX(calc((-100% - var(--image-gap)) * ${
+    index + 1
+  }))`;
 }
 
 // Auto Scrool
@@ -47,6 +50,7 @@ function moveToNext() {
 }
 
 nextButton.addEventListener('click', () => {
+  imageContainer.children[index + 1].classList.remove('active');
   if (index !== images.length - 1) {
     moveTo(++index);
   } else {
@@ -57,9 +61,11 @@ nextButton.addEventListener('click', () => {
     index = 0;
     moveTo(index);
   }
+  imageContainer.children[index + 1].classList.add('active');
 });
 
 prevButton.addEventListener('click', () => {
+  imageContainer.children[index + 1].classList.remove('active');
   if (index !== 0) {
     moveTo(--index);
   } else {
@@ -70,4 +76,5 @@ prevButton.addEventListener('click', () => {
     index = images.length - 1;
     moveTo(index);
   }
+  imageContainer.children[index + 1].classList.add('active');
 });

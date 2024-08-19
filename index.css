@@ -1,16 +1,28 @@
+:root {
+  --image-gap: 5em;
+}
+
 #swiper {
   width: 20em;
-  border: 5px solid yellow;
-  margin: 10em;
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  margin: 15em;
   overflow: hidden;
+  padding: 3.5em 15em;
 }
 
 #image-container {
   display: flex;
-  transform: translateX(-100%);
+  gap: var(--image-gap);
+  transform: translateX(calc(-100% - var(--image-gap)));
   transition: transform 0.3s;
 }
 
 img {
   max-width: 100%;
+  transition: transform 0.3s;
+  border-radius: 10px;
+}
+
+img.active {
+  transform: scale(1.3);
 }
